@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+#数据库配置
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+#Redis配置
+  redis:
+    host: 127.0.0.1 #edis服务器IP
+    port: 6379 # Redis服务器连接端口
+    password: ffcs1234 # 连接密码（默认为空）
+    pool:
+      max-active: 12 # 连接池最大连接数
+      max-wait: -1 # 连接池最大阻塞
+      max-idle: 12 # 连接池中的最大空闲连接
+      min-idle: 2 # 连接池中的最小空闲连接
+    timeout: 0 # 连接超时时间
+
+#日志配置
+logging:
+  path: C:/WEB-INF/logs #保存日志
+  lv: info # 控制台日志输出级别
+  dateSize: 1 # 日志保存天数
+
+#邮箱配置
+email:
+  #主机
+  smtpHost: smtp.qq.com
+  #端口(465或587)
+  smtpPort: 465
+  username: ************@qq.com
+  password: *************
+  SSL: true
+  email_from: *************@qq.com
+  email_to: *************@qq.com
