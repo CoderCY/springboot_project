@@ -1,15 +1,18 @@
 server:
   port: 8080
 
-#数据库配置
 spring:
+  # 场景配置，生产，测试，开发
   profiles:
     active: dev
+
+  #数据库配置
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/test_db
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
+
 #Redis配置
   redis:
     host: 127.0.0.1 #edis服务器IP
@@ -22,7 +25,14 @@ spring:
       min-idle: 2 # 连接池中的最小空闲连接
     timeout: 0 # 连接超时时间
 
-#日志配置
+  #activeMQ配置
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+    close-timeout: 15s
+
+#logback日志配置
 logging:
   path: C:/WEB-INF/logs #保存日志
   lv: info # 控制台日志输出级别
