@@ -7,14 +7,17 @@
     <springProperty scope="context" name="log.lv" source="logging.lv"/>
     <springProperty scope="context" name="log.dateSize" source="logging.dateSize"/>
 
+    <conversionRule conversionWord="composite" converterClass="cn.cy.core.console.ConsoleConverterBase"/>
+
     <!--输出到控制台-->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
         <!--此日志appender是为开发使用，只配置最底级别，控制台输出的日志级别是大于或等于此级别的日志信息-->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>${log.lv}</level>
         </filter>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yyyy/MM/dd HH:mm:ss.SSS} %magenta([%thread]) %composite(%-5level) %cyan(%logger{15}) - %msg%n</pattern>
             <!--编码-->
             <charset>utf-8</charset>
         </encoder>
