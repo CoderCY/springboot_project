@@ -30,4 +30,12 @@ public class SysUserService {
         boolean bool2 = sysUserDaoInter.addSysUser(user2)>0?true:false;
         return bool1&&bool2;
     }
+
+    public SysUser getSysUser(String name) {
+        return sysUserDaoInter.getSysUser(name);
+    }
+
+    public boolean updatePsw(SysUser user) {
+        return sysUserDaoInter.updatePsw(user)>0?true:false;
+    }
 }

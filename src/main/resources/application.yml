@@ -44,8 +44,8 @@ email:
   smtpHost: smtp.qq.com
   #端口(465或587)
   smtpPort: 465
-  username: ************@qq.com
-  password: *************
+  username: 123@qq.com
+  password: 123
   SSL: true
-  email_from: *************@qq.com
-  email_to: *************@qq.com
+  email_from: 123@qq.com
+  email_to: 123@qq.com
