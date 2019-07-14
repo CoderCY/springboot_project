@@ -1,5 +1,7 @@
 package cn.cy.util;
 
+import org.apache.commons.lang3.time.DateFormatUtils;
+
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -9,16 +11,7 @@ import java.util.*;
 public class UtilTest {
 
     public static void main(String[] args) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("op","my name");
-        List<String> list = new ArrayList<>();
-        list.add("admin");
-        list.add("user");
-        map.put("auth", list);
-        String token = JWTUtil.createJWT(map,0L);
-        System.out.println(token);
-        List<String> p = (List)JWTUtil.verifyJwt(token).get("auth");
-        System.out.println(p);
-
+        String pattern = "yyyy-MM-dd'T'HH:mm:ssZZ";
+        System.out.println(DateFormatUtils.format(new Date(), pattern));
     }
 }

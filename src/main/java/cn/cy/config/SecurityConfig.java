@@ -64,19 +64,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests().antMatchers("/model/**","/editor/**", "/editoer-app/**",
+//                "/diagram-viewer/**", "/**/*.html", "/**/*.css", "/**/*.js",
+//                "/**/*.ico","/**/*.map", "/**/*.woff", "/**/*.ttf").permitAll();
+
+        http.authorizeRequests().antMatchers("/**").permitAll();
+
         //开启跨域 关闭csrf。
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 //开启swagger2的必要权限
-                .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**","/swagger-resources/configuration/ui").permitAll()
+//                .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**","/swagger-resources/configuration/ui").permitAll()
                 //开启api的匿名访问
-                .antMatchers("/api/**").permitAll()
+//                .antMatchers("/api/**").permitAll()
                 //角色为管理员的时候才有权限访问admin地址
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 //角色为USER的时候才有权限访问user地址
                 .antMatchers("/sysUsers/**").access("hasRole('USER')")
                 //由于该项目定位是前后端分离，这个项目只涉及到后端，所以没有HTML css等文件，所以注释掉，需要的就将他打开
-                //.antMatchers("/", "/*.html","/favicon.ico", "/css/**", "/js/**").permitAll()
+//                .antMatchers("/", "/static/**", "/**/*.html","/favicon.ico", "/css/**", "/js/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

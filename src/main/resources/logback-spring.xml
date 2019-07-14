@@ -172,6 +172,7 @@
     <!--不同环境分别设置对应的日志输出节点 -->
     <!--开发-->
     <springProfile name="dev">
+        <logger name="cn.cy.dao" level="debug"/>
         <root level="debug">
             <appender-ref ref="console" />
             <appender-ref ref="info" />
